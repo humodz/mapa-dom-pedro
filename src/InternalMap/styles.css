@@ -1,0 +1,24 @@
+.InternalMap {
+  flex-basis: 0;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.mapImage {
+  height: calc(min(600px, 100vw) * 1420 / 824);
+
+  background-image: url("https://parquedpedro.com.br/data/files/58/26/0B/B7/6351181054F5EF08180808FF/Mapa_PDP_L1%20_1_.jpg");
+  background-position: center bottom;
+  background-size: 120%;
+  background-repeat: no-repeat;
+}
+
+.region {
+  border: 3px solid red;
+  transform: translate(-50%, -50%);
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top: 100%;
+  left: 50%;
+}
