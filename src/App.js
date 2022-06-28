@@ -4,7 +4,7 @@ import { InternalMap } from './components/InternalMap';
 import { SearchStores } from './components/SearchStores';
 import { SelectedStore } from './components/SelectedStore';
 import { fetchStores } from './data/stores';
-import { Icon } from './components/Icon';
+// import { Icon } from './components/Icon';
 
 export function App() {
   const [stores, setStores] = useState([]);
@@ -28,10 +28,10 @@ export function App() {
           stores={stores}
           setSelectedStore={setSelectedStore}
         ></SearchStores>
-        <Icon
+        {/* <Icon
           name="keycap-asterisk"
           size="2.5"
-        ></Icon>
+        ></Icon> */}
       </div>
 
       <div>

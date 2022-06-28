@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
+import Fuse from 'fuse.js';
 import styles from './styles.module.css';
 
 export function SearchStores({
@@ -11,15 +12,21 @@ export function SearchStores({
     setSearchText(event.target.value)
   }, []);
 
+  const fuse = useMemo(() => {
+    return new Fuse(stores, {
+      keys: ['nome'],
+    });
+  }, [stores]);
+
   const filteredStores = useMemo(() => {
     if (!searchText) {
       return [];
     }
 
-    return stores
-      .filter(it => it.nome.toUpperCase().includes(searchText.toUpperCase()))
-      .slice(0, 10);
-  }, [searchText, stores]);
+    return fuse.search(searchText)
+      .slice(0, 10)
+      .map(it => it.item);
+  }, [searchText, fuse]);
 
   const selectStore = useCallback(store => {
     setSearchText('');
@@ -35,13 +42,15 @@ export function SearchStores({
       ></input>
 
       <div className={styles.storeList}>
-        {filteredStores.map(store => (
-          <StoreItem
-            key={store.id}
-            store={store}
-            onClick={() => selectStore(store)}
-          ></StoreItem>
-        ))}
+        {
+          filteredStores.map(store => (
+            <StoreItem
+              key={store.id}
+              store={store}
+              onClick={() => selectStore(store)}
+            ></StoreItem>
+          ))
+        }
       </div>
     </div>
   );
