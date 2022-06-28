@@ -1,4 +1,4 @@
-import './styles.css';
+import styles from './styles.module.css';
 
 
 const regions = {
@@ -27,13 +27,13 @@ const regions = {
 
 export function InternalMap({ highlight }) {
   return (
-    <div className='InternalMap'>
-      <div className='mapImage'>
+    <div className={styles.InternalMap}>
+      <div className={styles.mapImage}>
 
         {
           Boolean(highlight && regions[highlight]) &&
             <div
-              className='region'
+              className={styles.region}
               style={regions[highlight]}
             ></div>
         }
