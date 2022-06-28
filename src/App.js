@@ -45,7 +45,7 @@ export function App() {
       </div>
 
       <InternalMap
-        highlight={selectedStore?.pavimento[0]}
+        highlight={selectedStore}
       ></InternalMap>
     </div>
   );

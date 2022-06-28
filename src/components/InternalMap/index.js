@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+import { removeDiacritics } from '../../utils';
 import styles from './styles.module.css';
 
 
@@ -26,15 +28,23 @@ const regions = {
 
 
 export function InternalMap({ highlight }) {
+  const region = useMemo(() => {
+    if (!highlight) {
+      return null;
+    }
+
+    return removeDiacritics(highlight.pavimento[0]).toUpperCase();
+  }, [highlight]);
+
   return (
     <div className={styles.InternalMap}>
       <div className={styles.mapImage}>
 
         {
-          Boolean(highlight && regions[highlight]) &&
+          Boolean(region && regions[region]) &&
             <div
               className={styles.region}
-              style={regions[highlight]}
+              style={regions[region]}
             ></div>
         }
 
