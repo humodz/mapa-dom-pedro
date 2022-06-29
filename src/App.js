@@ -3,11 +3,16 @@ import { useCallback, useEffect, useState } from 'react';
 import { InternalMap } from './components/InternalMap';
 import { SearchStores } from './components/SearchStores';
 import { SelectedStore } from './components/SelectedStore';
-import { fetchStores } from './data/stores';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectStores, fetchStores } from './store/storesSlice';
 // import { Icon } from './components/Icon';
 
 export function App() {
-  const [stores, setStores] = useState([]);
+  const dispatch = useDispatch();
+  const stores = useSelector(selectStores);
+
+  console.log('!!!', stores);
+
   const [selectedStore, setSelectedStore] = useState(null);
 
   const unselectStore = useCallback(() => {
@@ -15,11 +20,8 @@ export function App() {
   }, [])
 
   useEffect(() => {
-    fetchStores()
-      .then(data => {
-        setStores(data);
-      });
-  }, []);
+    dispatch(fetchStores());
+  }, [dispatch]);
 
   return (
     <div className={styles.App}>
