@@ -2,9 +2,9 @@ import { useCallback, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
 import styles from './styles.module.css';
 
-export function SearchStores({
-  stores,
-  setSelectedStore,
+export function SearchShops({
+  shops,
+  setSelectedShop,
 }) {
   const [searchText, setSearchText] = useState('');
 
@@ -13,12 +13,12 @@ export function SearchStores({
   }, []);
 
   const fuse = useMemo(() => {
-    return new Fuse(stores, {
+    return new Fuse(shops, {
       keys: ['nome'],
     });
-  }, [stores]);
+  }, [shops]);
 
-  const filteredStores = useMemo(() => {
+  const filteredShops = useMemo(() => {
     if (!searchText) {
       return [];
     }
@@ -28,10 +28,10 @@ export function SearchStores({
       .map(it => it.item);
   }, [searchText, fuse]);
 
-  const selectStore = useCallback(store => {
+  const selectShop = useCallback(shop => {
     setSearchText('');
-    setSelectedStore(store);
-  }, [setSelectedStore]);
+    setSelectedShop(shop);
+  }, [setSelectedShop]);
 
   return (
     <div>
@@ -41,14 +41,14 @@ export function SearchStores({
         onChange={updateSearchText}
       ></input>
 
-      <div className={styles.storeList}>
+      <div className={styles.shopList}>
         {
-          filteredStores.map(store => (
-            <StoreItem
-              key={store.id}
-              store={store}
-              onClick={() => selectStore(store)}
-            ></StoreItem>
+          filteredShops.map(shop => (
+            <ShopItem
+              key={shop.id}
+              shop={shop}
+              onClick={() => selectShop(shop)}
+            ></ShopItem>
           ))
         }
       </div>
@@ -56,16 +56,16 @@ export function SearchStores({
   );
 }
 
-function StoreItem({ store, onClick }) {
+function ShopItem({ shop, onClick }) {
   return (
-    <div className={styles.storeItem} onClick={onClick}>
+    <div className={styles.shopItem} onClick={onClick}>
       <div
-        className={styles.storeImage}
+        className={styles.shopImage}
         style={{
-          backgroundImage: `url('${store.imgURL}')`,
+          backgroundImage: `url('${shop.imgURL}')`,
         }}
       ></div>
-      <div className={styles.storeName}>{ store.nome }</div>
+      <div className={styles.shopName}>{ shop.nome }</div>
     </div>
   )
 }

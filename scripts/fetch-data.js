@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 async function main() {
-  const { data: stores } = await axios.get('https://parquedpedro.com.br/lojas_files/lojas.json');
-  saveFile('public/data/stores.json', JSON.stringify(stores, null, 2));
+  const { data: shops } = await axios.get('https://parquedpedro.com.br/lojas_files/lojas.json');
+  saveFile('public/data/shops.json', JSON.stringify(shops, null, 2));
 }
 
 function saveFile(destination, data) {

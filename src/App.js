@@ -1,35 +1,35 @@
 import styles from './App.module.css';
 import { useCallback, useEffect, useState } from 'react';
 import { InternalMap } from './components/InternalMap';
-import { SearchStores } from './components/SearchStores';
-import { SelectedStore } from './components/SelectedStore';
+import { SearchShops } from './components/SearchShops';
+import { SelectedShop } from './components/SelectedShop';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectStores, fetchStores } from './store/storesSlice';
+import { selectShops, fetchShops } from './store/shopsSlice';
 // import { Icon } from './components/Icon';
 
 export function App() {
   const dispatch = useDispatch();
-  const stores = useSelector(selectStores);
+  const shops = useSelector(selectShops);
 
-  console.log('!!!', stores);
+  console.log('!!!', shops);
 
-  const [selectedStore, setSelectedStore] = useState(null);
+  const [selectedShop, setSelectedShop] = useState(null);
 
-  const unselectStore = useCallback(() => {
-    setSelectedStore(null);
+  const unselectShop = useCallback(() => {
+    setSelectedShop(null);
   }, [])
 
   useEffect(() => {
-    dispatch(fetchStores());
+    dispatch(fetchShops());
   }, [dispatch]);
 
   return (
     <div className={styles.App}>
       <div>
-        <SearchStores
-          stores={stores}
-          setSelectedStore={setSelectedStore}
-        ></SearchStores>
+        <SearchShops
+          shops={shops}
+          setSelectedShop={setSelectedShop}
+        ></SearchShops>
         {/* <Icon
           name="keycap-asterisk"
           size="2.5"
@@ -38,16 +38,16 @@ export function App() {
 
       <div>
         {
-          Boolean(selectedStore) &&
-            <SelectedStore
-              store={selectedStore}
-              unselectStore={unselectStore}
-            ></SelectedStore>
+          Boolean(selectedShop) &&
+            <SelectedShop
+              shop={selectedShop}
+              unselectShop={unselectShop}
+            ></SelectedShop>
         }
       </div>
 
       <InternalMap
-        highlight={selectedStore}
+        highlight={selectedShop}
       ></InternalMap>
     </div>
   );

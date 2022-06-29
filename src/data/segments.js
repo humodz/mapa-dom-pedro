@@ -1,9 +1,9 @@
-export function getSegments(stores) {
+export function getSegments(shops) {
   const allSegments = new Map();
 
-  for (const store of stores) {
-    const segment = store.itensSeguimento[0].seguimento;
-    const subSegment = store.itensSeguimento[0].subseguimento;
+  for (const shop of shops) {
+    const segment = shop.itensSeguimento[0].seguimento;
+    const subSegment = shop.itensSeguimento[0].subseguimento;
 
     allSegments.set(segment, allSegments.get(segment) || new Set());
     allSegments.get(segment).add(subSegment);

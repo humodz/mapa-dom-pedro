@@ -1,32 +1,32 @@
 import { Icon } from '../Icon';
 import styles from './styles.module.css';
 
-export function SelectedStore({ store, unselectStore }) {
+export function SelectedShop({ shop, unselectShop }) {
   return (
-    <div className={styles.SelectedStore}>
+    <div className={styles.SelectedShop}>
       <div
-        className={styles.storeImage}
+        className={styles.shopImage}
         style={{
-          backgroundImage: `url('${store.imgURL}')`,
+          backgroundImage: `url('${shop.imgURL}')`,
         }}
       ></div>
-      <div className={styles.storeInfo}>
-        <div><strong>{ store.nome }</strong></div>
+      <div className={styles.shopInfo}>
+        <div><strong>{ shop.nome }</strong></div>
         <div className={styles.capitalized}>
           <Icon name="label"></Icon>
           &nbsp;
-          { store.itensSeguimento[0].seguimento.toLowerCase() }
+          { shop.itensSeguimento[0].seguimento.toLowerCase() }
         </div>
         <div className={styles.capitalized}>
           <Icon name="pushpin"></Icon>
           &nbsp;
-          { store.pavimento[0].toLowerCase() }
+          { shop.pavimento[0].toLowerCase() }
         </div>
       </div>
       <Icon
         name="cross-mark"
         size="1.5"
-        onClick={unselectStore}
+        onClick={unselectShop}
       ></Icon>
     </div>
   );

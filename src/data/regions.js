@@ -1,5 +1,5 @@
-export function getRegions(stores) {
-    const allRegions = stores.map(it => it.pavimento[0]);
+export function getRegions(shops) {
+    const allRegions = shops.map(it => it.pavimento[0]);
     const uniqueRegions = new Set(allRegions);
     return [...uniqueRegions];
 }
