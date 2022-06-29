@@ -10,6 +10,8 @@ const initialState = {
   shops: [],
 };
 
+export const selectShops = state => state.shops.shops;
+
 export const fetchShops = createAsyncThunk(
   'shops/fetchShops',
   async () => {
@@ -28,7 +30,5 @@ export const shopsSlice = createSlice({
       });
   },
 });
-
-export const selectShops = state => state.shops.shops;
 
 export const shopsReducer = shopsSlice.reducer;
