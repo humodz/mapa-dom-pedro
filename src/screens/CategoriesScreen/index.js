@@ -4,7 +4,7 @@ import { selectShopsByCategory } from '../../store/shopsSlice';
 import { setSelectedShop } from '../../store/searchShopsSlice';
 import { useMemo } from 'react';
 import { sorted } from '../../utils';
-import { SelectedShop } from '../../components/SelectedShop';
+import { ShopDetails } from '../../components/ShopDetails';
 
 const collator = new Intl.Collator(['pt-BR', 'pt'], {
   usage: 'sort',
@@ -53,12 +53,12 @@ function Category({ name, shops, onClickShop }) {
       </summary>
       {
         shops.map((shop) => (
-          <SelectedShop
+          <ShopDetails
             key={shop.id}
             shop={shop}
             onClick={() => onClickShop(shop)}
             showSubCategory={true}
-          ></SelectedShop>
+          ></ShopDetails>
           // <p key={shop.id} onClick={() => onClickShop(shop)}>
           //   <img src={shop.imgURL} alt="" width="50" height="50"></img>
           //   {shop.nome}

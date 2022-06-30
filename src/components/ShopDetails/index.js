@@ -2,10 +2,10 @@ import { useMemo } from 'react';
 import { Icon } from '../Icon';
 import styles from './styles.module.css';
 
-export function SelectedShop({
+export function ShopDetails({
   shop,
   onClick = () => {},
-  unselectShop,
+  onClose,
   showSubCategory = false
 }) {
   const label = useMemo(() => {
@@ -15,7 +15,7 @@ export function SelectedShop({
   }, [shop, showSubCategory]);
 
   return (
-    <div className={styles.SelectedShop} onClick={onClick}>
+    <div className={styles.ShopDetails} onClick={onClick}>
       <div
         className={styles.shopImage}
         style={{
@@ -36,11 +36,11 @@ export function SelectedShop({
         </div>
       </div>
       {
-        Boolean(unselectShop) &&
+        Boolean(onClose) &&
           <Icon
             name="cross-mark"
             size="1.5"
-            onClick={unselectShop}
+            onClick={onClose}
           ></Icon>
       }
     </div>

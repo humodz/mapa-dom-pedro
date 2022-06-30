@@ -1,5 +1,5 @@
 import { InternalMap } from '../../components/InternalMap';
-import { SelectedShop } from '../../components/SelectedShop';
+import { ShopDetails } from '../../components/ShopDetails';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSelectedShop, unselectShop } from '../../store/searchShopsSlice';
 
@@ -12,10 +12,10 @@ export function MapScreen() {
       <div>
         {
           Boolean(selectedShop) &&
-            <SelectedShop
+            <ShopDetails
               shop={selectedShop}
-              unselectShop={() => dispatch(unselectShop())}
-            ></SelectedShop>
+              onClose={() => dispatch(unselectShop())}
+            ></ShopDetails>
         }
       </div>
 

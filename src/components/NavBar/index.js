@@ -1,5 +1,5 @@
-import { Icon } from '../components/Icon';
-import { SearchShops } from '../components/SearchShops';
+import { Icon } from '../Icon';
+import { SearchShops } from '../SearchShops';
 import styles from './styles.module.css';
 
 export function NavBar({
@@ -9,7 +9,7 @@ export function NavBar({
 }) {
   return (
     <>
-      <div className={styles.navBar}>
+      <div className={styles.NavBar}>
         <SearchShops
           shops={shops}
           onChooseShop={onSelectShop}

@@ -3,13 +3,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.navBar {
-  display: flex;
-  position: fixed;
-  width: 100%;
-}
-
-.navBar > :first-child {
-  flex-grow: 1;
-}
