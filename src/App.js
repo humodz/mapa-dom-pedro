@@ -5,7 +5,7 @@ import { selectShops, fetchShops } from './store/shopsSlice';
 import { Screen, selectCurrentScreen, switchScreen, setSelectedShop } from './store/searchShopsSlice';
 import { MapScreen } from './screens/MapScreen';
 import { CategoriesScreen } from './screens/CategoriesScreen';
-import { NavBar } from './NavBar';
+import { NavBar } from './components/NavBar';
 
 export function App() {
   const dispatch = useDispatch();

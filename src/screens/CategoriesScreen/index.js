@@ -1,10 +1,9 @@
-import styles from './styles.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectShopsByCategory } from '../../store/shopsSlice';
 import { setSelectedShop } from '../../store/searchShopsSlice';
 import { useMemo } from 'react';
 import { sorted } from '../../utils';
-import { ShopDetails } from '../../components/ShopDetails';
+import { Category } from '../../components/Category';
 
 const collator = new Intl.Collator(['pt-BR', 'pt'], {
   usage: 'sort',
@@ -42,29 +41,5 @@ export function CategoriesScreen() {
           ))
       }
     </div>
-  );
-}
-
-function Category({ name, shops, onClickShop }) {
-  return (
-    <details className={styles.Category}>
-      <summary>
-        {name} <span className={styles.shopCount}>({shops.length})</span>
-      </summary>
-      {
-        shops.map((shop) => (
-          <ShopDetails
-            key={shop.id}
-            shop={shop}
-            onClick={() => onClickShop(shop)}
-            showSubCategory={true}
-          ></ShopDetails>
-          // <p key={shop.id} onClick={() => onClickShop(shop)}>
-          //   <img src={shop.imgURL} alt="" width="50" height="50"></img>
-          //   {shop.nome}
-          // </p>
-        ))
-      }
-    </details>
   );
 }
