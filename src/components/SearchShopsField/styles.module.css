@@ -12,27 +12,3 @@
   flex-direction: column;
   z-index: 1;
 }
-
-.shopItem {
-  background-color: #FFF;
-  color: #000;
-  display: flex;
-  border-bottom: 1px solid #DDD;
-  padding: 0.25rem 1rem;
-}
-
-.shopImage {
-  height: 2rem;
-  width: 2rem;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.shopName {
-  display: flex;
-  align-items: center;
-  flex-basis: 0;
-  flex-grow: 1;
-  margin-left: 1rem;
-}

@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
 import styles from './styles.module.css';
+import { ShopSummary } from '../ShopSummary';
 
 
 const noShopsFound = {
@@ -51,37 +52,20 @@ export function SearchShopsField({
       <div className={styles.shopList}>
         {
           filteredShops.map(shop => (
-            <ShopItem
+            <ShopSummary
               key={shop.id}
               shop={shop}
               onClick={() => chooseShop(shop)}
-            ></ShopItem>
+            ></ShopSummary>
           ))
         }
         {
           Boolean(searchText && filteredShops.length === 0) &&
-            <ShopItem
+            <ShopSummary
               shop={noShopsFound}
-            ></ShopItem>
+            ></ShopSummary>
         }
       </div>
     </div>
   );
-}
-
-function ShopItem({
-  shop,
-  onClick = () => {}
-}) {
-  return (
-    <div className={styles.shopItem} onClick={onClick}>
-      <div
-        className={styles.shopImage}
-        style={{
-          backgroundImage: `url('${shop.imgURL}')`,
-        }}
-      ></div>
-      <div className={styles.shopName}>{ shop.nome }</div>
-    </div>
-  )
 }
