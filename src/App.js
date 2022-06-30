@@ -1,12 +1,11 @@
 import styles from './App.module.css';
 import { useEffect } from 'react';
-import { SearchShops } from './components/SearchShops';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectShops, fetchShops } from './store/shopsSlice';
 import { Screen, selectCurrentScreen, switchScreen, setSelectedShop } from './store/searchShopsSlice';
 import { MapScreen } from './screens/MapScreen';
 import { CategoriesScreen } from './screens/CategoriesScreen';
-import { Icon } from './components/Icon';
+import { NavBar } from './NavBar';
 
 export function App() {
   const dispatch = useDispatch();
@@ -19,17 +18,11 @@ export function App() {
 
   return (
     <div className={styles.App}>
-      <div className={styles.navBar}>
-        <SearchShops
-          shops={shops}
-          setSelectedShop={store => dispatch(setSelectedShop(store))}
-        ></SearchShops>
-        <Icon
-          name="keycap-asterisk"
-          size="2.5"
-          onClick={() => dispatch(switchScreen())}
-        ></Icon>
-      </div>
+      <NavBar
+        shops={shops}
+        onSelectShop={shop => dispatch(setSelectedShop(shop))}
+        onSwitchScreen={() => dispatch(switchScreen())}
+      ></NavBar>
 
       {
         Boolean(currentScreen === Screen.MAP) &&

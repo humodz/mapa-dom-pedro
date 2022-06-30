@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 export function SearchShops({
   shops,
-  setSelectedShop,
+  onChooseShop,
 }) {
   const [searchText, setSearchText] = useState('');
 
@@ -30,8 +30,8 @@ export function SearchShops({
 
   const chooseShop = useCallback(shop => {
     setSearchText('');
-    setSelectedShop(shop);
-  }, [setSelectedShop]);
+    onChooseShop(shop);
+  }, [onChooseShop]);
 
   return (
     <div>
