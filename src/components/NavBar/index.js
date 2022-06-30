@@ -1,5 +1,5 @@
 import { Icon } from '../Icon';
-import { SearchShops } from '../SearchShops';
+import { SearchShopsField } from '../SearchShopsField';
 import styles from './styles.module.css';
 
 export function NavBar({
@@ -10,10 +10,10 @@ export function NavBar({
   return (
     <>
       <div className={styles.NavBar}>
-        <SearchShops
+        <SearchShopsField
           shops={shops}
           onChooseShop={onSelectShop}
-        ></SearchShops>
+        ></SearchShopsField>
         <Icon
           name="keycap-asterisk"
           size="2.5"

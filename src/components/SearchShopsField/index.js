@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
 import styles from './styles.module.css';
 
-export function SearchShops({
+export function SearchShopsField({
   shops,
   onChooseShop,
 }) {

@@ -27,6 +27,11 @@ export function CategoriesScreen() {
       ])
   ), [shopsByCategory]);
 
+  const onClickShop = shop => {
+    window.scrollTo(0, 0);
+    dispatch(setSelectedShop(shop));
+  }
+
   return (
     <div>
       {
@@ -36,7 +41,7 @@ export function CategoriesScreen() {
               key={i}
               name={name}
               shops={shops}
-              onClickShop={shop => dispatch(setSelectedShop(shop))}
+              onClickShop={onClickShop}
             ></Category>
           ))
       }
