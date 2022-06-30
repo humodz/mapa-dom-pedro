@@ -1,15 +1,14 @@
 import styles from './App.module.css';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectShops, fetchShops } from './store/shopsSlice';
-import { Screen, selectCurrentScreen, switchScreen, setSelectedShop } from './store/searchShopsSlice';
+import { fetchShops } from './store/shopsSlice';
+import { Screen, selectCurrentScreen } from './store/searchShopsSlice';
 import { MapScreen } from './screens/MapScreen';
 import { CategoriesScreen } from './screens/CategoriesScreen';
 import { NavBar } from './components/NavBar';
 
 export function App() {
   const dispatch = useDispatch();
-  const shops = useSelector(selectShops);
   const currentScreen = useSelector(selectCurrentScreen);
 
   useEffect(() => {
@@ -18,11 +17,7 @@ export function App() {
 
   return (
     <div className={styles.App}>
-      <NavBar
-        shops={shops}
-        onSelectShop={shop => dispatch(setSelectedShop(shop))}
-        onSwitchScreen={() => dispatch(switchScreen())}
-      ></NavBar>
+      <NavBar></NavBar>
 
       {
         Boolean(currentScreen === Screen.MAP) &&

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import Fuse from 'fuse.js';
 import styles from './styles.module.css';
 import { ShopSummary } from '../ShopSummary';
@@ -11,13 +11,13 @@ const noShopsFound = {
 
 export function SearchShopsField({
   shops,
-  onChooseShop,
+  onChooseShop = () => {},
+  searchText,
+  onChangeSearchText = () => {},
 }) {
-  const [searchText, setSearchText] = useState('');
-
   const updateSearchText = useCallback(event => {
-    setSearchText(event.target.value)
-  }, []);
+    onChangeSearchText(event.target.value)
+  }, [onChangeSearchText]);
 
   const fuse = useMemo(() => {
     return new Fuse(shops, {
@@ -35,11 +35,6 @@ export function SearchShopsField({
       .map(it => it.item);
   }, [searchText, fuse]);
 
-  const chooseShop = useCallback(shop => {
-    setSearchText('');
-    onChooseShop(shop);
-  }, [onChooseShop]);
-
   return (
     <div>
       <input
@@ -55,7 +50,7 @@ export function SearchShopsField({
             <ShopSummary
               key={shop.id}
               shop={shop}
-              onClick={() => chooseShop(shop)}
+              onClick={() => onChooseShop(shop)}
             ></ShopSummary>
           ))
         }

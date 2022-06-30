@@ -6,10 +6,12 @@ export const Screen = {
 };
 
 const initialState = {
+  searchText: '',
   currentScreen: Screen.MAP,
   selectedShop: null,
 };
 
+export const selectSearchText = state => state.searchShops.searchText;
 export const selectCurrentScreen = state => state.searchShops.currentScreen;
 export const selectSelectedShop = state => state.searchShops.selectedShop;
 
@@ -17,7 +19,11 @@ export const searchShopsSlice = createSlice({
   name: 'searchShops',
   initialState,
   reducers: {
+    setSearchText(state, { payload: text }) {
+      state.searchText = text;
+    },
     setSelectedShop(state, { payload: shop }) {
+      state.searchText = '';
       state.currentScreen = Screen.MAP;
       state.selectedShop = shop;
     },
@@ -31,6 +37,7 @@ export const searchShopsSlice = createSlice({
         state.currentScreen = Screen.MAP;
       }
 
+      state.searchText = '';
       state.selectedShop = null;
     },
   },
@@ -39,6 +46,7 @@ export const searchShopsSlice = createSlice({
 });
 
 export const {
+  setSearchText,
   setSelectedShop,
   unselectShop,
   switchScreen,
