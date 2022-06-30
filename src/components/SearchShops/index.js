@@ -28,7 +28,7 @@ export function SearchShops({
       .map(it => it.item);
   }, [searchText, fuse]);
 
-  const selectShop = useCallback(shop => {
+  const chooseShop = useCallback(shop => {
     setSearchText('');
     setSelectedShop(shop);
   }, [setSelectedShop]);
@@ -47,7 +47,7 @@ export function SearchShops({
             <ShopItem
               key={shop.id}
               shop={shop}
-              onClick={() => selectShop(shop)}
+              onClick={() => chooseShop(shop)}
             ></ShopItem>
           ))
         }

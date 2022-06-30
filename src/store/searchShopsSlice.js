@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { enumContains } from '../utils';
 
-const Screen = {
+export const Screen = {
   MAP: 'MAP',
-  SEGMENTS: 'SEGMENTS',
+  CATEGORIES: 'CATEGORIES',
 };
 
 const initialState = {
@@ -18,19 +17,20 @@ export const searchShopsSlice = createSlice({
   name: 'searchShops',
   initialState,
   reducers: {
-    selectShop(state, { payload: shop }) {
+    setSelectedShop(state, { payload: shop }) {
       state.currentScreen = Screen.MAP;
       state.selectedShop = shop;
     },
     unselectShop(state) {
       state.selectedShop = null;
     },
-    goToScreen(state, { payload: screen }) {
-      if (!enumContains(Screen, screen)) {
-        return;
+    switchScreen(state) {
+      if (state.currentScreen === Screen.MAP) {
+        state.currentScreen = Screen.CATEGORIES;
+      } else {
+        state.currentScreen = Screen.MAP;
       }
 
-      state.currentScreen = Screen.MAP;
       state.selectedShop = null;
     },
   },
@@ -39,9 +39,9 @@ export const searchShopsSlice = createSlice({
 });
 
 export const {
-  selectShop,
+  setSelectedShop,
   unselectShop,
-  goToScreen,
+  switchScreen,
 } = searchShopsSlice.actions;
 
 export const searchShopsReducer = searchShopsSlice.reducer;

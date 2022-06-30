@@ -1,9 +1,21 @@
+import { useMemo } from 'react';
 import { Icon } from '../Icon';
 import styles from './styles.module.css';
 
-export function SelectedShop({ shop, unselectShop }) {
+export function SelectedShop({
+  shop,
+  onClick = () => {},
+  unselectShop,
+  showSubCategory = false
+}) {
+  const label = useMemo(() => {
+    const info = shop.itensSeguimento[0];
+    const labelText = showSubCategory ? info.subseguimento : info.seguimento;
+    return labelText.toLowerCase();
+  }, [shop, showSubCategory]);
+
   return (
-    <div className={styles.SelectedShop}>
+    <div className={styles.SelectedShop} onClick={onClick}>
       <div
         className={styles.shopImage}
         style={{
@@ -15,7 +27,7 @@ export function SelectedShop({ shop, unselectShop }) {
         <div className={styles.capitalized}>
           <Icon name="label"></Icon>
           &nbsp;
-          { shop.itensSeguimento[0].seguimento.toLowerCase() }
+          { label }
         </div>
         <div className={styles.capitalized}>
           <Icon name="pushpin"></Icon>
@@ -23,11 +35,14 @@ export function SelectedShop({ shop, unselectShop }) {
           { shop.pavimento[0].toLowerCase() }
         </div>
       </div>
-      <Icon
-        name="cross-mark"
-        size="1.5"
-        onClick={unselectShop}
-      ></Icon>
+      {
+        Boolean(unselectShop) &&
+          <Icon
+            name="cross-mark"
+            size="1.5"
+            onClick={unselectShop}
+          ></Icon>
+      }
     </div>
   );
 }

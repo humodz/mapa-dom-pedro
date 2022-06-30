@@ -5,6 +5,7 @@
 }
 
 .shopImage {
+  flex-shrink: 0;
   height: 4rem;
   width: 4rem;
   margin-right: 1rem;

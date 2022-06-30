@@ -3,13 +3,15 @@ import { useEffect } from 'react';
 import { SearchShops } from './components/SearchShops';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectShops, fetchShops } from './store/shopsSlice';
-import { selectShop } from './store/searchShopsSlice';
+import { Screen, selectCurrentScreen, switchScreen, setSelectedShop } from './store/searchShopsSlice';
 import { MapScreen } from './screens/MapScreen';
-// import { Icon } from './components/Icon';
+import { CategoriesScreen } from './screens/CategoriesScreen';
+import { Icon } from './components/Icon';
 
 export function App() {
   const dispatch = useDispatch();
   const shops = useSelector(selectShops);
+  const currentScreen = useSelector(selectCurrentScreen);
 
   useEffect(() => {
     dispatch(fetchShops());
@@ -17,18 +19,27 @@ export function App() {
 
   return (
     <div className={styles.App}>
-      <div>
+      <div className={styles.navBar}>
         <SearchShops
           shops={shops}
-          setSelectedShop={store => dispatch(selectShop(store))}
+          setSelectedShop={store => dispatch(setSelectedShop(store))}
         ></SearchShops>
-        {/* <Icon
+        <Icon
           name="keycap-asterisk"
           size="2.5"
-        ></Icon> */}
+          onClick={() => dispatch(switchScreen())}
+        ></Icon>
       </div>
 
-      <MapScreen></MapScreen>
+      {
+        Boolean(currentScreen === Screen.MAP) &&
+          <MapScreen></MapScreen>
+      }
+
+      {
+        Boolean(currentScreen === Screen.CATEGORIES) &&
+          <CategoriesScreen></CategoriesScreen>
+      }
     </div>
   );
 }

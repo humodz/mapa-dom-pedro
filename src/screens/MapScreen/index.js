@@ -1,4 +1,3 @@
-import styles from './styles.module.css';
 import { InternalMap } from '../../components/InternalMap';
 import { SelectedShop } from '../../components/SelectedShop';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,7 +8,7 @@ export function MapScreen() {
   const selectedShop = useSelector(selectSelectedShop);
 
   return (
-    <div class={styles.MapScreen}>
+    <div>
       <div>
         {
           Boolean(selectedShop) &&
