@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSearchText, setSearchText, setSelectedShop, switchScreen } from '../../store/searchShopsSlice';
 import { selectShops } from '../../store/shopsSlice';
-import { Icon } from '../Icon';
-import { SearchShopsField } from '../SearchShopsField';
+import { Icon } from '../../components/Icon';
+import { SearchShopsField } from '../../components/SearchShopsField';
 import styles from './styles.module.css';
 
 export function NavBar() {

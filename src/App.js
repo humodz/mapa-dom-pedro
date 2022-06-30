@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchShops } from './store/shopsSlice';
 import { Screen, selectCurrentScreen } from './store/searchShopsSlice';
-import { MapScreen } from './screens/MapScreen';
-import { CategoriesScreen } from './screens/CategoriesScreen';
-import { NavBar } from './components/NavBar';
+import { MapScreen } from './containers/MapScreen';
+import { CategoriesScreen } from './containers/CategoriesScreen';
+import { NavBar } from './containers/NavBar';
 
 export function App() {
   const dispatch = useDispatch();
