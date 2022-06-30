@@ -15,8 +15,8 @@ export function NavBar({
           onChooseShop={onSelectShop}
         ></SearchShopsField>
         <Icon
-          name="keycap-asterisk"
-          size="2.5"
+          name='keycap-asterisk'
+          size='2.5'
           onClick={onSwitchScreen}
         ></Icon>
       </div>

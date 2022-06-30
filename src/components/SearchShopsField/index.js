@@ -2,6 +2,12 @@ import { useCallback, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
 import styles from './styles.module.css';
 
+
+const noShopsFound = {
+  imgURL: '',
+  nome: 'Nenhuma loja encontrada.'
+};
+
 export function SearchShopsField({
   shops,
   onChooseShop,
@@ -36,6 +42,7 @@ export function SearchShopsField({
   return (
     <div>
       <input
+        placeholder='Nome da Loja...'
         className={styles.searchInput}
         value={searchText}
         onChange={updateSearchText}
@@ -51,12 +58,21 @@ export function SearchShopsField({
             ></ShopItem>
           ))
         }
+        {
+          Boolean(searchText && filteredShops.length === 0) &&
+            <ShopItem
+              shop={noShopsFound}
+            ></ShopItem>
+        }
       </div>
     </div>
   );
 }
 
-function ShopItem({ shop, onClick }) {
+function ShopItem({
+  shop,
+  onClick = () => {}
+}) {
   return (
     <div className={styles.shopItem} onClick={onClick}>
       <div

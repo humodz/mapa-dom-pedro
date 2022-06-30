@@ -25,12 +25,12 @@ export function ShopDetails({
       <div className={styles.shopInfo}>
         <div><strong>{ shop.nome }</strong></div>
         <div className={styles.capitalized}>
-          <Icon name="label"></Icon>
+          <Icon name='label'></Icon>
           &nbsp;
           { label }
         </div>
         <div className={styles.capitalized}>
-          <Icon name="pushpin"></Icon>
+          <Icon name='pushpin'></Icon>
           &nbsp;
           { shop.pavimento[0].toLowerCase() }
         </div>
@@ -38,8 +38,8 @@ export function ShopDetails({
       {
         Boolean(onClose) &&
           <Icon
-            name="cross-mark"
-            size="1.5"
+            name='cross-mark'
+            size='1.5'
             onClick={onClose}
           ></Icon>
       }
