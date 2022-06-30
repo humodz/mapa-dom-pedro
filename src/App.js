@@ -1,17 +1,15 @@
 import styles from './App.module.css';
 import { useEffect } from 'react';
-import { InternalMap } from './components/InternalMap';
 import { SearchShops } from './components/SearchShops';
-import { SelectedShop } from './components/SelectedShop';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectShops, fetchShops } from './store/shopsSlice';
-import { selectSelectedShop, selectShop, unselectShop } from './store/searchShopsSlice';
+import { selectShop } from './store/searchShopsSlice';
+import { MapScreen } from './screens/MapScreen';
 // import { Icon } from './components/Icon';
 
 export function App() {
   const dispatch = useDispatch();
   const shops = useSelector(selectShops);
-  const selectedShop = useSelector(selectSelectedShop);
 
   useEffect(() => {
     dispatch(fetchShops());
@@ -30,19 +28,7 @@ export function App() {
         ></Icon> */}
       </div>
 
-      <div>
-        {
-          Boolean(selectedShop) &&
-            <SelectedShop
-              shop={selectedShop}
-              unselectShop={() => dispatch(unselectShop())}
-            ></SelectedShop>
-        }
-      </div>
-
-      <InternalMap
-        highlight={selectedShop}
-      ></InternalMap>
+      <MapScreen></MapScreen>
     </div>
   );
 }
