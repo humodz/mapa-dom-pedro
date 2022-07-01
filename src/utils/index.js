@@ -23,6 +23,15 @@ export function sorted(items, compare) {
   return [...items].sort(compare);
 }
 
+export function unique(items) {
+  return [...new Set(items)];
+}
+
+export const uniqueId = (() => {
+  let id = 1;
+  return (prefix = '') => prefix + id++;
+})();
+
 export const collatorPtBr = new Intl.Collator(['pt-BR', 'pt'], {
   usage: 'sort',
   sensitivity: 'base',
