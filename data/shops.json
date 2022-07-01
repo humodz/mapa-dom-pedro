@@ -365,7 +365,7 @@
     "imgURL": "https://elephant-file-storage.nyc3.digitaloceanspaces.com/public/images/mos/images%20%283%29___XSQZoNIl_BGgZ8GgyjwSm.png",
     "descricao": "",
     "tipo": "L",
-    "hasValidSocialMidias": false,
+    "hasValidSocialMidias": true,
     "itensSeguimento": [
       {
         "seguimento": "VESTUÁRIO",
@@ -381,7 +381,14 @@
     "telefone": [
       "19 30147439"
     ],
-    "redesSociais": [],
+    "redesSociais": [
+      {
+        "id": "0",
+        "value": "551930147439",
+        "type": "WHATSAPP",
+        "typeId": "9"
+      }
+    ],
     "palavrasChave": ""
   },
   {
@@ -3354,21 +3361,21 @@
     "redesSociais": [
       {
         "id": "0",
-        "value": "5519981987432 ",
-        "type": "WHATSAPP",
-        "typeId": "9"
-      },
-      {
-        "id": "1",
         "value": "551932080763",
         "type": "DRIVE-THRU (WHATSAPP)",
         "typeId": "13"
       },
       {
-        "id": "2",
+        "id": "1",
         "value": "https://tinyurl.com/y72g3lrk",
         "type": "DELIVERY",
         "typeId": "12"
+      },
+      {
+        "id": "2",
+        "value": "5519983022556",
+        "type": "WHATSAPP",
+        "typeId": "9"
       }
     ],
     "palavrasChave": ""
@@ -4691,45 +4698,6 @@
     "palavrasChave": ""
   },
   {
-    "id": "18910",
-    "nome": "FAST SHOP",
-    "site": "https://www.fastshop.com.br/web/",
-    "imgURL": "https://elephant-file-storage.nyc3.digitaloceanspaces.com/public/files/Parque-D-Pedro/Arquivos-Wise-It/Lojas-logos/1083393709/693047.jpeg",
-    "descricao": "",
-    "tipo": "L",
-    "hasValidSocialMidias": true,
-    "itensSeguimento": [
-      {
-        "seguimento": "ARTIGOS DO LAR",
-        "subseguimento": "ELETRODOMÉSTICOS"
-      }
-    ],
-    "categoria": [
-      "ARTIGOS DO LAR"
-    ],
-    "pavimento": [
-      "ALAMEDA"
-    ],
-    "telefone": [
-      "19 37972903"
-    ],
-    "redesSociais": [
-      {
-        "id": "0",
-        "value": "https://www.fastshop.com.br/web/",
-        "type": "COMÉRCIO ELETRÔNICO",
-        "typeId": "10"
-      },
-      {
-        "id": "1",
-        "value": "551199292-0874",
-        "type": "WHATSAPP",
-        "typeId": "9"
-      }
-    ],
-    "palavrasChave": ""
-  },
-  {
     "id": "18907",
     "nome": "FAST SHOP",
     "site": "https://www.fastshop.com.br/web/",
@@ -4771,6 +4739,45 @@
         "value": "www.fastshop.com.br",
         "type": "COMÉRCIO ELETRÔNICO",
         "typeId": "10"
+      }
+    ],
+    "palavrasChave": ""
+  },
+  {
+    "id": "18910",
+    "nome": "FAST SHOP",
+    "site": "https://www.fastshop.com.br/web/",
+    "imgURL": "https://elephant-file-storage.nyc3.digitaloceanspaces.com/public/files/Parque-D-Pedro/Arquivos-Wise-It/Lojas-logos/1083393709/693047.jpeg",
+    "descricao": "",
+    "tipo": "L",
+    "hasValidSocialMidias": true,
+    "itensSeguimento": [
+      {
+        "seguimento": "ARTIGOS DO LAR",
+        "subseguimento": "ELETRODOMÉSTICOS"
+      }
+    ],
+    "categoria": [
+      "ARTIGOS DO LAR"
+    ],
+    "pavimento": [
+      "ALAMEDA"
+    ],
+    "telefone": [
+      "19 37972903"
+    ],
+    "redesSociais": [
+      {
+        "id": "0",
+        "value": "https://www.fastshop.com.br/web/",
+        "type": "COMÉRCIO ELETRÔNICO",
+        "typeId": "10"
+      },
+      {
+        "id": "1",
+        "value": "551199292-0874",
+        "type": "WHATSAPP",
+        "typeId": "9"
       }
     ],
     "palavrasChave": ""
@@ -8978,6 +8985,39 @@
     "palavrasChave": ""
   },
   {
+    "id": "43926",
+    "nome": "MOVIDA",
+    "site": "www.movida.com.br",
+    "imgURL": "https://elephant-file-storage.nyc3.digitaloceanspaces.com/public/images/mos/movida-logo%20%281%29___QK7KyqHeuYx8N5turxdP_.png",
+    "descricao": "",
+    "tipo": "L",
+    "hasValidSocialMidias": true,
+    "itensSeguimento": [
+      {
+        "seguimento": "CONVENIÊNCIA / SERVIÇOS",
+        "subseguimento": "OUTROS SERVIÇOS"
+      }
+    ],
+    "categoria": [
+      "CONVENIÊNCIA / SERVIÇOS"
+    ],
+    "pavimento": [
+      "ENTRADA DAS COLINAS"
+    ],
+    "telefone": [
+      "19 31231282"
+    ],
+    "redesSociais": [
+      {
+        "id": "0",
+        "value": "www.movida.com.br",
+        "type": "COMÉRCIO ELETRÔNICO",
+        "typeId": "10"
+      }
+    ],
+    "palavrasChave": ""
+  },
+  {
     "id": "19334",
     "nome": "MR2 SUPLEMENTOS",
     "site": "http://www.mr2suplementos.com.br/",
@@ -9984,6 +10024,43 @@
         "value": "5519999869239",
         "type": "DRIVE-THRU (WHATSAPP)",
         "typeId": "13"
+      }
+    ],
+    "palavrasChave": ""
+  },
+  {
+    "id": "43944",
+    "nome": "OPPNUS",
+    "site": "www.oppnus.com.br",
+    "imgURL": "https://elephant-file-storage.nyc3.digitaloceanspaces.com/public/images/mos/oppnus-jeans-squarelogo-1554791562776%20%281%29____phlpo42BNAAh-y-rt_vX.png",
+    "descricao": "",
+    "tipo": "L",
+    "hasValidSocialMidias": true,
+    "itensSeguimento": [
+      {
+        "seguimento": "LOJAS DE DEPARTAMENTOS",
+        "subseguimento": "VESTUÁRIO"
+      }
+    ],
+    "categoria": [
+      "LOJAS DE DEPARTAMENTOS"
+    ],
+    "pavimento": [
+      "CORREDOR DE COLINAS"
+    ],
+    "telefone": [],
+    "redesSociais": [
+      {
+        "id": "0",
+        "value": "5511953691005",
+        "type": "WHATSAPP",
+        "typeId": "9"
+      },
+      {
+        "id": "1",
+        "value": "www.oppnus.com.br",
+        "type": "COMÉRCIO ELETRÔNICO",
+        "typeId": "10"
       }
     ],
     "palavrasChave": ""
@@ -14846,9 +14923,7 @@
     "pavimento": [
       "CORREDOR DE FLORES"
     ],
-    "telefone": [
-      "19 32092592"
-    ],
+    "telefone": [],
     "redesSociais": [
       {
         "id": "0",
