@@ -4,41 +4,41 @@ import { useCallback, useMemo, useState } from 'react';
 import { collatorPtBr, sorted, unique } from '../../utils';
 import { useUniqueId } from '../../utils/hooks';
 
-export function Category({ name, shops, onClickShop }) {
-  const id = useUniqueId('cat');
+const SHOW_ALL = 0;
 
+export function Category({ name, shops, onClickShop }) {
   const subCategories = useMemo(() => {
     const allSubCategories = shops.map(
       shop => shop.itensSeguimento[0].subseguimento.toLowerCase()
     );
-    return sorted(unique(allSubCategories), collatorPtBr.compare);
+    return ['mostrar todas', ...sorted(unique(allSubCategories), collatorPtBr.compare)];
   }, [shops]);
 
-  const [isChecked, toggle, reset] = useCheckboxList();
+  const [checkedSubCategory, setCheckedSubCategory] = useState(SHOW_ALL);
 
-  const selectedShops = useMemo(() => {
-    const selectedSubCategories = subCategories.filter((_, i) => isChecked(i));
+  const showAll = useCallback(() => setCheckedSubCategory(SHOW_ALL), []);
 
-    return shops.filter(shop =>
-      selectedSubCategories.includes(shop.itensSeguimento[0].subseguimento.toLowerCase())
-    );
-  }, [shops, subCategories, isChecked]);
+  const selectedShops = useMemo(() => (
+    shops.filter(shop => {
+      const shopSubCategory = shop.itensSeguimento[0].subseguimento.toLowerCase();
+      return checkedSubCategory === SHOW_ALL || subCategories[checkedSubCategory] === shopSubCategory;
+    })
+  ), [shops, subCategories, checkedSubCategory]);
 
   return (
-    <details className={styles.Category} onToggle={reset}>
+    <details className={styles.Category} onToggle={showAll}>
       <summary>
         {name} <span className={styles.shopCount}>({shops.length})</span>
       </summary>
       <div className={styles.subCategories}>
         {
           subCategories.map((subCategory, i) => (
-            <Checkbox
+            <RadioButton
               key={i}
-              id={`${id}-${i}`}
               label={subCategory}
-              checked={isChecked(i)}
-              onChange={() => toggle(i)}
-            ></Checkbox>
+              checked={checkedSubCategory === i}
+              onChange={() => setCheckedSubCategory(i)}
+            ></RadioButton>
           ))
         }
         <hr></hr>
@@ -57,11 +57,13 @@ export function Category({ name, shops, onClickShop }) {
   );
 }
 
-function Checkbox({ id, label, checked, onChange }) {
+function RadioButton({ label, checked, onChange }) {
+  const id = useUniqueId('radio');
+
   return (
     <div>
       <input
-        type='checkbox'
+        type='radio'
         id={id}
         checked={checked}
         onChange={onChange}
@@ -69,22 +71,4 @@ function Checkbox({ id, label, checked, onChange }) {
       <label htmlFor={id}>{label}</label>
     </div>
   );
-}
-
-function useCheckboxList() {
-  const [unchecked, setUnchecked] = useState({});
-
-  const isChecked = useCallback(
-    (i) => !unchecked[i],
-    [unchecked],
-  );
-
-  const toggle = useCallback((i) => setUnchecked(state => ({
-    ...state,
-    [i]: !state[i]
-  })), []);
-
-  const reset = useCallback(() => setUnchecked({}), []);
-
-  return [isChecked, toggle, reset];
 }

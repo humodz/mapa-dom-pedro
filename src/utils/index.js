@@ -19,8 +19,18 @@ export function groupBy(items, keyFn, valueFn = it => it) {
   return result;
 }
 
-export function sorted(items, compare) {
+export function sorted(items, compare = defaultCompare) {
   return [...items].sort(compare);
+}
+
+export function defaultCompare(item1, item2) {
+  if (item1 < item2) {
+    return -1;
+  } else if (item1 > item2) {
+    return 1;
+  } else {
+    return 0;
+  }
 }
 
 export function unique(items) {
