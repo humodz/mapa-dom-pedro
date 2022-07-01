@@ -22,3 +22,10 @@ export function groupBy(items, keyFn, valueFn = it => it) {
 export function sorted(items, compare) {
   return [...items].sort(compare);
 }
+
+export const collatorPtBr = new Intl.Collator(['pt-BR', 'pt'], {
+  usage: 'sort',
+  sensitivity: 'base',
+  ignorePunctuation: true,
+  numeric: true,
+});

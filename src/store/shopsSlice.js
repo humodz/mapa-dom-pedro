@@ -1,12 +1,6 @@
 import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
-import { groupBy, sorted } from '../utils';
+import { collatorPtBr, groupBy, sorted } from '../utils';
 
-const collator = new Intl.Collator(['pt-BR', 'pt'], {
-  usage: 'sort',
-  sensitivity: 'base',
-  ignorePunctuation: true,
-  numeric: true,
-});
 
 const initialState = {
   shops: [],
@@ -19,10 +13,10 @@ export const selectShopsByCategory = createSelector([selectShops], (shops) => {
 
   return Array
     .from(shopsByCategory)
-    .sort(([category1], [category2]) => collator.compare(category1, category2))
+    .sort(([category1], [category2]) => collatorPtBr.compare(category1, category2))
     .map(([category, shops]) => [
       category,
-      sorted(shops, (shop1, shop2) => collator.compare(shop1.nome, shop2.nome))
+      sorted(shops, (shop1, shop2) => collatorPtBr.compare(shop1.nome, shop2.nome))
     ]);
 });
 
