@@ -44,6 +44,6 @@ export const shopsReducer = shopsSlice.reducer;
 
 // TODO: move this somewhere?
 function apiFetchShops() {
-  return fetch('/data/shops.json')
+  return fetch(`${process.env.PUBLIC_URL}/data/shops.json`)
       .then(res => res.json());
 }
