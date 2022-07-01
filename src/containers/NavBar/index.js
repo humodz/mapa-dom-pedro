@@ -11,7 +11,7 @@ export function NavBar() {
   const shops = useSelector(selectShops);
   const searchText = useSelector(selectSearchText);
 
-  const onSelectShop = shop => dispatch(setSelectedShop(shop));
+  const onChooseShop = shop => dispatch(setSelectedShop(shop));
   const onSwitchScreen = () => dispatch(switchScreen());
   const onChangeSearchText = (text) => dispatch(setSearchText(text));
 
@@ -20,7 +20,7 @@ export function NavBar() {
       <div className={styles.NavBar}>
         <SearchShopsField
           shops={shops}
-          onChooseShop={onSelectShop}
+          onChooseShop={onChooseShop}
           searchText={searchText}
           onChangeSearchText={onChangeSearchText}
         ></SearchShopsField>
