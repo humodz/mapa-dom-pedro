@@ -26,7 +26,7 @@ export function NavBar() {
         ></SearchShopsField>
         <Icon
           name='keycap-asterisk'
-          size='2.5'
+          size={2.5}
           onClick={onSwitchScreen}
         ></Icon>
       </div>

@@ -39,7 +39,7 @@ export function ShopDetails({
         Boolean(onClose) &&
           <Icon
             name='cross-mark'
-            size='1.5'
+            size={1.5}
             onClick={onClose}
           ></Icon>
       }
