@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: '16.x'
       - run: npm ci
+      - run: node scripts/fetch-shops.js
       - run: npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
