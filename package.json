@@ -1,6 +1,7 @@
 {
   "name": "mapa-dom-pedro",
   "version": "0.1.0",
+  "homepage": "https://humodz.github.io/mapa-dom-pedro",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
