@@ -2,7 +2,7 @@ import styles from './styles.module.css';
 import { ShopDetails } from '../ShopDetails';
 import { useCallback, useMemo, useState } from 'react';
 import { collatorPtBr, sorted, unique } from '../../utils';
-import { useUniqueId } from '../../utils/hooks';
+import { RadioButton } from '../RadioButton';
 
 const SHOW_ALL = 0;
 
@@ -54,21 +54,5 @@ export function Category({ name, shops, onClickShop }) {
         ))
       }
     </details>
-  );
-}
-
-function RadioButton({ label, checked, onChange }) {
-  const id = useUniqueId('radio');
-
-  return (
-    <div>
-      <input
-        type='radio'
-        id={id}
-        checked={checked}
-        onChange={onChange}
-      ></input>
-      <label htmlFor={id}>{label}</label>
-    </div>
   );
 }
