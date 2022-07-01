@@ -1,17 +1,17 @@
-import { useUniqueId } from '../../utils/hooks';
+import { useId } from 'react';
 
 export function RadioButton({ label, checked, onChange }) {
-  const id = useUniqueId('radio');
+  const id = useId();
 
   return (
     <div>
       <input
         type='radio'
-        id={id}
+        id={`radio-${id}`}
         checked={checked}
         onChange={onChange}
       ></input>
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={`radio-${id}`}>{label}</label>
     </div>
   );
 }
