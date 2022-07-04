@@ -85,5 +85,5 @@ function useFuzzySearch(searchText, shops) {
       .map(it => it.item);
   }, [searchText, fuseNormal, fuseWithoutDiacritics]);
 
-  return filteredShops
+  return filteredShops;
 }
