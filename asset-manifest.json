@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mapa-dom-pedro/static/css/main.5822e145.css",
-    "main.js": "/mapa-dom-pedro/static/js/main.23fe1111.js",
+    "main.js": "/mapa-dom-pedro/static/js/main.0c7aff1f.js",
     "static/js/787.f66f7f0c.chunk.js": "/mapa-dom-pedro/static/js/787.f66f7f0c.chunk.js",
     "index.html": "/mapa-dom-pedro/index.html",
     "main.5822e145.css.map": "/mapa-dom-pedro/static/css/main.5822e145.css.map",
-    "main.23fe1111.js.map": "/mapa-dom-pedro/static/js/main.23fe1111.js.map",
+    "main.0c7aff1f.js.map": "/mapa-dom-pedro/static/js/main.0c7aff1f.js.map",
     "787.f66f7f0c.chunk.js.map": "/mapa-dom-pedro/static/js/787.f66f7f0c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5822e145.css",
-    "static/js/main.23fe1111.js"
+    "static/js/main.0c7aff1f.js"
   ]
 }
