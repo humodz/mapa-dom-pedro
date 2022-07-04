@@ -20,25 +20,7 @@ export function SearchShopsField({
     onChangeSearchText(event.target.value)
   }, [onChangeSearchText]);
 
-  const fuse = useMemo(() => {
-    return new Fuse(shops, {
-      keys: ['nome'],
-      getFn(obj, path) {
-        const value = Fuse.config.getFn(obj, path);
-        return removeDiacritics(value);
-      },
-    });
-  }, [shops]);
-
-  const filteredShops = useMemo(() => {
-    if (!searchText) {
-      return [];
-    }
-
-    return fuse.search(removeDiacritics(searchText))
-      .slice(0, 10)
-      .map(it => it.item);
-  }, [searchText, fuse]);
+  const filteredShops = useFuzzySearch(searchText, shops);
 
   return (
     <div>
@@ -68,4 +50,40 @@ export function SearchShopsField({
       </div>
     </div>
   );
+}
+
+function useFuzzySearch(searchText, shops) {
+  const fuseNormal = useMemo(() => {
+    return new Fuse(shops, {
+      keys: ['nome'],
+    });
+  }, [shops]);
+
+  const fuseWithoutDiacritics = useMemo(() => {
+    return new Fuse(shops, {
+      keys: ['nome'],
+      getFn(obj, path) {
+        const value = Fuse.config.getFn(obj, path);
+        return removeDiacritics(value);
+      },
+    });
+  }, [shops]);
+
+  const filteredShops = useMemo(() => {
+    if (!searchText) {
+      return [];
+    }
+
+    const searchTextWithoutDiacritics = removeDiacritics(searchText);
+
+    const fuse = (searchText === searchTextWithoutDiacritics)
+      ? fuseWithoutDiacritics
+      : fuseNormal;
+
+    return fuse.search(searchText)
+      .slice(0, 10)
+      .map(it => it.item);
+  }, [searchText, fuseNormal, fuseWithoutDiacritics]);
+
+  return filteredShops
 }
