@@ -2,6 +2,7 @@ import { useCallback, useMemo } from 'react';
 import Fuse from 'fuse.js';
 import styles from './styles.module.css';
 import { ShopSummary } from '../ShopSummary';
+import { removeDiacritics } from '../../utils';
 
 
 const noShopsFound = {
@@ -22,6 +23,10 @@ export function SearchShopsField({
   const fuse = useMemo(() => {
     return new Fuse(shops, {
       keys: ['nome'],
+      getFn(obj, path) {
+        const value = Fuse.config.getFn(obj, path);
+        return removeDiacritics(value);
+      },
     });
   }, [shops]);
 
@@ -30,7 +35,7 @@ export function SearchShopsField({
       return [];
     }
 
-    return fuse.search(searchText)
+    return fuse.search(removeDiacritics(searchText))
       .slice(0, 10)
       .map(it => it.item);
   }, [searchText, fuse]);
